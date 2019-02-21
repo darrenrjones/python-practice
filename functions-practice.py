@@ -76,10 +76,10 @@ def almost_there(n):
     # return abs(100 - n) in range(0,10) or abs(200 - n) in range(0,10)
     return abs(100 - n) <= 10 or abs(200 - n) <= 10
 
-print(almost_there(104))  # T
-print(almost_there(104))  # T
-print(almost_there(150))  # F
-print(almost_there(209))  # T
+# print(almost_there(104))  # T
+# print(almost_there(104))  # T
+# print(almost_there(150))  # F
+# print(almost_there(209))  # T
 
 
 # LEVEL 2 PROBLEMS
@@ -87,17 +87,22 @@ print(almost_there(209))  # T
 # FIND 33: Given a list of ints, return True if the array contains a 3 next to a 3 somewhere.
 
 def has_33(nums):
-    pass
-
-# print(has_33([1, 3, 3]))
-# print(has_33([1, 3, 1, 3]))
-# print(has_33([3, 1, 3]))
+    for i in range(0, len(nums)-1):
+        if nums[i] == 3 and nums[i+1] == 3:
+            return True
+    return False
+# print(has_33([1, 3, 3]))  # T
+# print(has_33([1, 3, 1, 3]))  # F
+# print(has_33([3, 1, 3]))   # F
 
 # PAPER DOLL: Given a string, return a string where for every character in the original there are three characters
 
 
 def paper_doll(text):
-    pass
+    tripled = ''
+    for letter in text:
+        tripled += letter*3
+    return tripled
 
 # print(paper_doll('Hello'))
 # print(paper_doll('Mississippi'))
@@ -106,8 +111,12 @@ def paper_doll(text):
 # BLACKJACK: Given three integers between 1 and 11, if their sum is less than or equal to 21, return their sum. If their sum exceeds 21 and there's an eleven, reduce the total sum by 10. Finally, if the sum (even after adjustment) exceeds 21, return 'BUST'
 
 def blackjack(a, b, c):
-    pass
+    summed = sum((a, b, c))
+    if (11 in (a, b, c)) and summed > 21:
+        summed -= 10
+    return summed if summed <= 21 else 'BUST'
 
+# print(blackjack(2,11,2)) #15
 # print(blackjack(5,6,7)) #18
 # print(blackjack(9,9,9)) # 'BUST'
 # print(blackjack(9,9,11)) # 19
@@ -116,11 +125,30 @@ def blackjack(a, b, c):
 
 
 def summer_69(arr):
-    pass
+    if not arr:
+        return 0
+    total = 0
+    adding = True
+    for num in arr:
+        while adding:
+            if num != 6:
+                total += num
+                break
+            else:
+                adding = False
+        while not adding:
+            if num != 9:
+                break
+            else:
+                adding = True
+                break
+    return total
 
-# print(summer_69([1, 3, 5])) # 9
-# print(summer_69([4, 5, 6, 7, 8, 9])) # 9
-# print(summer_69([2, 1, 6, 9, 11])) # 14
+
+# print(summer_69([]))  # 9
+# print(summer_69([1, 3, 5]))  # 9
+# print(summer_69([4, 5, 6, 7, 8, 9]))  # 9
+# print(summer_69([2, 1, 6, 9, 11]))  # 14
 
 # CHALLENGING PROBLEMS:
 
