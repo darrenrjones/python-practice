@@ -156,20 +156,40 @@ def summer_69(arr):
 
 
 def spy_game(nums):
-    pass
+    code = [0, 0, 7, 'done']
+    for char in nums:
+        if char == code[0]:
+            code = code[1::]
+    return len(code) == 1
 
-# print(spy_game([1,2,4,0,0,7,5])) # T
-# print(spy_game([1,0,2,4,0,5,7])) # T
-# print(spy_game([1,7,2,0,4,5,0])) # F
+
+# print(spy_game([1, 2, 4, 0, 0, 7, 5]))  # T
+# print(spy_game([1, 0, 2, 4, 0, 5, 7]))  # T
+# print(spy_game([1, 7, 2, 0, 4, 5, 0]))  # F
 
 # COUNT PRIMES: Write a function that returns the number of prime numbers that exist up to and including a given number
 # 0 and 1 not primes
 
 
 def count_primes(num):
-    pass
+    if num < 2:
+        return 0
+    primes = [2]
+    x = 3
 
-# print(count_primes(100)) #25
+    while x <= num:
+        for y in primes:
+            if x % y == 0:
+                x += 2
+                break
+        else:
+            primes.append(x)
+            x += 2
+    print(primes)
+    return len(primes)
+
+
+# print(count_primes(100000))  # 25
 
 # JUST FOR FUN
 
@@ -184,4 +204,35 @@ def count_primes(num):
 
 
 def print_big(letter):
-    pass
+    patterns = {
+        1: '  *  ',
+        2: ' * * ',
+        3: '*   *',
+        4: '*****',
+        5: '**** ',
+        6: '   * ',
+        7: ' *   ',
+        8: '*   * ',
+        9: '*    ',
+        10:'***',
+        11:'*  *',
+        12:'**  *',
+        13:'* * *',
+        14:'*  **'
+    }
+    alphabet = {
+        'A':[1,2,4,3,3],
+        'D':[10,11,11,11,10],
+        'E':[4,9,4,9,4],
+        'R':[5,3,5,11,8],
+        'N':[3,12,13,14,3]
+    }
+    for pattern in alphabet[letter.upper()]:
+        print(patterns[pattern])
+
+# print(print_big('d'))
+# print(print_big('a'))
+# print(print_big('r'))
+# print(print_big('r'))
+# print(print_big('e'))
+# print(print_big('n'))
