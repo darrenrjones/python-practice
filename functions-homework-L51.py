@@ -4,20 +4,14 @@ import math
 def vol(rad):
     return 4/3 * math.pi * rad**3
 
-print(vol(3))
+# print(vol(3))
 
 # Write a function that checks whether a number is in a given range(Inclusive of high and low)
 
 def ran_check(num, low, high):
-    pass
+    return num in range(low, high+1)
 
-# If you only wanted to return a boolean:
-
-def ran_bool(num, low, high):
-    pass
-
-# ran_bool(3, 1, 10) #True
-
+# print(ran_check(5,1,5))
 
 
 # Write a Python function that accepts a string and calculate the number of upper case letters and lower case letters.
@@ -30,8 +24,21 @@ def ran_bool(num, low, high):
 # If you feel ambitious, explore the Collections module to solve this problem!
 
 def up_low(s):
-    pass
+    upperCount = 0
+    lowerCount = 0
+    for char in s:
+        if char.isupper():
+            upperCount += 1
+        elif char.islower():
+            lowerCount += 1
+        else:
+            pass
 
+    print(f"No. of Upper case characters : {upperCount}")
+    print(f"No. of Lower case characters : {lowerCount}")
+
+
+# print(up_low('Hello Mr. Rogers, how are you this fine Tuesday?'))
 
 
 # Write a Python function that takes a list and returns a new list with unique elements of the first list.
